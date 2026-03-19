@@ -1,0 +1,23 @@
+# Cloudflare Tunnel config - thêm rule path /supervisor để Expo kết nối qua customer hostname
+# Copy vào ~/.cloudflared/config.yml và chạy: cloudflared tunnel run
+
+tunnel: <TUNNEL_ID>
+credentials-file: /home/trinh/.cloudflared/<TUNNEL_ID>.json
+
+ingress:
+  # Path /supervisor → port 3003 (Expo dùng wss://customer.../supervisor)
+  - hostname: customer.kimtruongphucserver.site
+    path: /supervisor
+    service: http://localhost:3003
+
+  # Customer WebSocket (mặc định)
+  - hostname: customer.kimtruongphucserver.site
+    service: http://localhost:3001
+
+  - hostname: kimtruongphucserver.site
+    service: http://localhost:3000
+
+  - hostname: supervisor.kimtruongphucserver.site
+    service: http://localhost:3003
+
+  - service: http_status:404

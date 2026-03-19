@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target":           "ESNext",
+    "module":           "ESNext",
+    "moduleResolution": "bundler",
+    "strict":           true,
+    "outDir":           "dist",
+    "rootDir":          "src",
+    "baseUrl":          ".",
+    "paths": { "@/*": ["src/*"] },
+    "types": ["bun-types"]
+  },
+  "include": ["src/**/*", "scripts/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
